@@ -16,14 +16,23 @@ public class LC28 {
             return -1;
         }
 
-        for (int i = 0; i <= haystacklength - needlelength; i++) {
-            int j = 0;
-            while (j < needlelength && haystack.charAt(i + j) == needle.charAt(j)) {
-                j++;
-            }
+        for (int i = 0; i < haystacklength - needlelength + 1; i++) {
+            // int j = 0;
+            // while (j < needlelength && haystack.charAt(i + j) == needle.charAt(j)) {
+            //     j++;
+            // }
 
-            if (j == needlelength) {
-                return i;
+            // if (j == needlelength) {
+            //     return i;
+            // }
+            //2nd method==============================================================
+            //haystack : sadbutnotsad | needle : but
+            if (haystack.charAt(i) == needle.charAt(0)) {     //if haystack's charAt(i) matches 'b' in but which is at 0th index
+
+                if (haystack.substring(i, needle.length() + i).equals(needle)) {    //if true, then check if the full substring exists, which is till needle.length() + 1 bcoz substring ignore's the final character. 
+
+                    return i;
+                }
             }
         }
         return -1;
